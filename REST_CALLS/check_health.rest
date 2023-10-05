@@ -1,0 +1,2 @@
+#Send an get to the health endpoint to check if the API is online.
+GET http://localhost:3000/health
