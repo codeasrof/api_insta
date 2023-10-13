@@ -1,0 +1,2 @@
+GET http://localhost:3000/health
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZXdJZCI6ImYyNjdmZGEyNWJiN2Y1NDA4OGVmMTZlODVhM2IwNTc5OmVlIiwiaWF0IjoxNjk2OTY2Mjc5LCJleHAiOjE2OTc1NzEwNzl9.E-Do0a9nsv_TlTWYzbJ8-gnCHqqgkg1dvaei53TGsFI

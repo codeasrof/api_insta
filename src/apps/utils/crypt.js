@@ -5,7 +5,7 @@ const algorithm = "aes-256-ctr";
 const secretKey = process.env.SECRET_CRYPTO;
 const iv = crypto.randomBytes(16);
 
-const encrypt = (text) => {
+const encrypt = async (text) => {
     const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
     const encrypted = Buffer.concat([cipher.update(text.toString()), cipher.final()])
@@ -17,7 +17,8 @@ const encrypt = (text) => {
 }
 
 const decrypt = (hash) => {
-    const [newIv, text] = hash.split(":")
+
+    const [newIv, text] = hash.split(':')
     const decipher = crypto.createDecipheriv(
         algorithm,
         secretKey, 
@@ -26,7 +27,8 @@ const decrypt = (hash) => {
 
     const decrypted = Buffer.concat(
         [decipher.update(Buffer.from(text, "hex")), decipher.final()]
-    );
+    ); 
+    console.log(newIv, text)
     return decrypted.toString();
 }
 

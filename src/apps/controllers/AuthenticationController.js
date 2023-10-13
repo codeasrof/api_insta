@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken")
 const Users = require("../models/Users")
 const {encrypt} = require("../utils/crypt")
+require("dotenv").config()
 
 class AuthenticationController{
     async authenticate(req,res){
-        const {email, user_name, password} = req.body;
 
+        const {email, user_name, password} = req.body;
         const whereClause = {}
         if(email){
             whereClause.email = email
@@ -29,15 +30,15 @@ class AuthenticationController{
 
         const {id, user_name: userName} = user;
 
-        const {iv, content} = encrypt(id);
+        const {iv, content} = await encrypt(id);
 
         const newId = `${iv}:${content}`;
 
-        const token = jwt.sign({newId}, process.env.HASH_BCRYPT, {
+        const token = jwt.sign({newId: newId}, process.env.HASH_BCRYPT, {
             expiresIn: process.env.EXPIRE_IN,
         })
         
-        return res.status(200).json({user: {id, user_name: userName}, token})
+        return res.status(200).json({user: {id, user_name: userName}, token: token})
     }
 }
 
