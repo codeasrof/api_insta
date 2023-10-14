@@ -1,0 +1,13 @@
+{
+    "title":"CreatePostSchema",
+    "type":"object",
+    "properties": {
+        "image":{
+            "type":"string"
+        },
+        "description":{
+            "type":"string"
+        }
+    },
+    "required":["image", "description"]
+}
