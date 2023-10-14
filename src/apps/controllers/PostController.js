@@ -47,6 +47,34 @@ class PostController{
 
         return res.status(200).json({message: "Post deleted!"})
     }
+
+    async update(req,res){
+        const {id} = req.params
+
+        const verifyPost = await Posts.findOne({
+            where:{
+                id,
+                author_id: req.userId
+            }
+        })
+
+        if(!verifyPost){
+            return res.status(400).json({message: "Post dont exists"})
+        }
+
+        if(verifyPost.author_id !== req.userId){
+            return res.status(401).json({message:"You dont have permission."})
+        }
+
+        const postUpdate = await Posts.update(req.bod, {where: {id}})
+
+        if(!postUpdate){
+            return res.status(400).json({message: "Failed to update"})
+        }
+
+        return res.status(200).json({message: "Post updated!"})
+
+    }
 }
 
 module.exports = new PostController()
