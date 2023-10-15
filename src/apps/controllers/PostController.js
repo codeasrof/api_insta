@@ -97,6 +97,33 @@ class PostController{
 
         return res.status(200).json({message: "Like added!"})
     }
+
+    async listPosts(req,res){
+        const allPosts = await Posts.findAll({
+            where:{
+                author_id: req.userId
+            },
+        })
+
+        if(!allPosts){
+            return res.status(400).json({message: "Failed to list all posts"})
+        }
+
+        const formattedData = []
+        
+        for(const post of allPosts){
+            formattedData.push({
+                id: post.id,
+                image: post.image,
+                description: post.description,
+                number_likes: post.number_likes
+            })
+        }
+
+        return res.status(200).json({data:formattedData})
+
+
+    }
 }
 
 module.exports = new PostController()
