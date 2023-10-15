@@ -25,6 +25,7 @@ routes.post("/upload", upload.single("image"), FileController.upload)
 routes.post("/post", schemaValidator(PostSchema), PostController.create)
 routes.delete("/post/:id", PostController.delete)
 routes.put("/post/:id", PostController.update)
+routes.put("/add-like/:id", PostController.addLike)
 
 routes.get("/health", (req, res) => {
     return res.send({message: "connected with success"})
