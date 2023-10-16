@@ -1,3 +1,0 @@
-#Send an get to the health endpoint to check if the API is online.
-GET http://localhost:3000/health
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuZXdJZCI6ImQxZTIyZTVhN2FkN2FiNzBjYTRkYmMxOWFhYWM4ZjAwOjEyIiwiaWF0IjoxNjk2OTk4ODY4LCJleHAiOjE2OTc2MDM2Njh9.hm1o8o5ZuzA2q73vksKHlQV04ppwNvW59LEah844LPE
