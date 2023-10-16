@@ -22,12 +22,14 @@ routes.put("/user", UserController.update)
 routes.delete("/user", UserController.delete)
 routes.get("/user-profile", UserController.userProfile)
 routes.post("/upload", upload.single("image"), FileController.upload)
-routes.post("/post", schemaValidator(PostSchema), PostController.create)
-routes.delete("/post/:id", PostController.delete)
-routes.put("/post/:id", PostController.update)
-routes.put("/add-like/:id", PostController.addLike)
-routes.get("/list-posts/", PostController.listPosts)
-routes.get("/all-posts/", PostController.listAllPosts)
+
+routes.post("/posts", schemaValidator(PostSchema), PostController.create)
+routes.delete("/posts/:id", PostController.delete)
+routes.put("/posts/:id", PostController.update)
+routes.get("/posts", PostController.listAllPosts)
+
+routes.put("/posts/add-like/:id", PostController.addLike)
+routes.get("/posts/list-posts/", PostController.listPosts)
 
 routes.get("/health", (req, res) => {
     return res.send({message: "connected with success"})
